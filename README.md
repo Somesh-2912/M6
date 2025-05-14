@@ -1,4 +1,8 @@
 # EX-26-AREA-OF-RECTANGLE-USING- POINTER
+
+Name: Somesh Sanjay V
+
+Register Number: 24002358
 ## AIM
 To write a C Program to find area of rectangle using pointer.
 
@@ -10,9 +14,30 @@ To write a C Program to find area of rectangle using pointer.
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+int main() {
+    float length, width, area;
+    float *ptrLength, *ptrWidth;
+    ptrLength = &length;
+    ptrWidth = &width;
+    printf("Enter the length of the rectangle: ");
+    scanf("%f", ptrLength);
+
+    printf("Enter the width of the rectangle: ");
+    scanf("%f", ptrWidth);
+
+    area = (*ptrLength) * (*ptrWidth);
+
+    printf("Area of the rectangle: %.2f\n", area);
+
+    return 0;
+}
+```
 ## OUTPUT
 		       	
+![WhatsApp Image 2025-05-13 at 21 41 52_428ce21b](https://github.com/user-attachments/assets/6cb70fc2-8475-448c-84c8-f3d4e54ef695)
 
 
 ## RESULT
@@ -34,9 +59,32 @@ To write a C Program to print 'WELCOME' using malloc() and free().
 6.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+
+    char *str = (char *)malloc(8 * sizeof(char));
+
+    if (str == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+    strcpy(str, "WELCOME");
+
+    printf("%s\n", str);
+
+    free(str);
+
+    return 0;
+}
+```
 
 ## OUTPUT
 
+![WhatsApp Image 2025-05-13 at 21 41 52_8c21a4ae](https://github.com/user-attachments/assets/15d27573-b12e-4bb2-acd7-3564b1243bf1)
 
 
 ## RESULT
@@ -60,10 +108,35 @@ To write a C Program to store the student information and display it using struc
 4.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+struct Student {
+    int id;
+    char name[50];
+    float marks;
+};
 
+int main() {
+    struct Student student;
+    printf("Enter student ID: ");
+    scanf("%d", &student.id);
+
+    printf("Enter student name: ");
+    scanf(" %[^\n]", student.name); 
+    printf("Enter student marks: ");
+    scanf("%f", &student.marks);
+    printf("\n--- Student Information ---\n");
+    printf("ID    : %d\n", student.id);
+    printf("Name  : %s\n", student.name);
+    printf("Marks : %.2f\n", student.marks);
+
+    return 0;
+}
+```
 
 ## OUTPUT
 
+![WhatsApp Image 2025-05-13 at 21 41 52_d203f2bf](https://github.com/user-attachments/assets/7ee863bb-ba84-45c5-ad04-de5791ffaa20)
 
 ## RESULT
 
@@ -87,9 +160,51 @@ To write a C Program to read and store the data of 3 employees and calculate the
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+struct Employee {
+    int id;
+    char name[50];
+    float basicSalary;
+    float grossSalary;
+};
+
+int main() {
+    struct Employee emp[3];
+    int i;
+    for (i = 0; i < 3; i++) {
+        printf("\nEnter details for Employee %d:\n", i + 1);
+        printf("ID: ");
+        scanf("%d", &emp[i].id);
+
+        printf("Name: ");
+        scanf(" %[^\n]", emp[i].name);
+
+        printf("Basic Salary: ");
+        scanf("%f", &emp[i].basicSalary);
+
+        float hra = 0.20f * emp[i].basicSalary;
+        float da  = 0.80f * emp[i].basicSalary;
+        emp[i].grossSalary = emp[i].basicSalary + hra + da;
+    }
+
+    printf("\n--- Employee Salary Details ---\n");
+    for (i = 0; i < 3; i++) {
+        printf("\nEmployee %d:\n", i + 1);
+        printf("ID           : %d\n", emp[i].id);
+        printf("Name         : %s\n", emp[i].name);
+        printf("Basic Salary : %.2f\n", emp[i].basicSalary);
+        printf("Gross Salary : %.2f\n", emp[i].grossSalary);
+    }
+    return 0;
+}
+```
 
  ## OUTPUT
+
+![WhatsApp Image 2025-05-13 at 21 41 53_20796f2e](https://github.com/user-attachments/assets/00ed8b5c-40d5-4962-aaa9-c1daa1784bd3)
+![WhatsApp Image 2025-05-13 at 21 41 53_fcb18fb8](https://github.com/user-attachments/assets/bddfcae9-a132-4bbb-bf39-e2a85291ed9b)
 
  
 
@@ -134,11 +249,45 @@ Step 7: Output Loop (i = 0 to 1):
 Step 8: End the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+struct Student {
+    int rollNo;
+    char name[50];
+    float marks[5]; 
+    float total;
+    float average;
+};
 
+int main() {
+    struct Student student;
+    int i;
+    printf("Enter student roll number: ");
+    scanf("%d", &student.rollNo);
+
+    printf("Enter student name: ");
+    student.total = 0;
+    printf("Enter marks for 5 subjects:\n");
+    for (i = 0; i < 5; i++) {
+        printf("Subject %d: ", i + 1);
+        scanf("%f", &student.marks[i]);
+        student.total += student.marks[i];
+    }
+    student.average = student.total / 5;
+    printf("\n--- Student Result ---\n");
+    printf("Roll No : %d\n", student.rollNo);
+    printf("Name    : %s\n", student.name);
+    printf("Total   : %.2f\n", student.total);
+    printf("Average : %.2f\n", student.average);
+
+    return 0;
+}
+```
 
 ## OUTPUT
 
- 
+ ![WhatsApp Image 2025-05-13 at 21 41 53_c0b66a0a](https://github.com/user-attachments/assets/7a83b7c0-f5d1-40b9-8438-29bc2020a47a)
+
 
 ## RESULT
 
